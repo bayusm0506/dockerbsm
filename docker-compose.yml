@@ -1,0 +1,32 @@
+version: "2"
+
+services:
+  nginx:
+    image: nginx:alpine
+    restart: always
+    links:
+      - 5.4.36-fpm
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/enabled:/etc/nginx/conf.d
+      - ./nginx/snippets:/nginx/snippets
+      - ./nginx/certificates:/nginx/certificates
+    volumes_from:
+      - data
+
+  5.4.36-fpm:
+    build:
+      context: ./dockerfiles
+      dockerfile: php5.4.36-fpm.Dockerfile
+    restart: always
+    volumes_from:
+      - data
+
+  data:
+    image: alpine:latest
+    command: echo "--- Docker data volume READY."
+    volumes:
+      - ./vhosts:/vhosts
+      - ./tmp:/tmp
