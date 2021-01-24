@@ -1,1 +1,7 @@
 db
+/vhosts/project/httpdocs/itos_bkl_prod
+/vhosts/project/httpdocs/itos_ska_prod
+/vhosts/project/httpdocs/new_billing_itos
+/vhosts/project/httpdocs/new_billing_itos_prod
+/vhosts/project/httpdocs/new_billing_backend
+/vhosts/project/httpdocs/new_billing_backend_prod
